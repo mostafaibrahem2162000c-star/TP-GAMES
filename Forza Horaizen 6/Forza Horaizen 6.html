@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Forza Horizon 6 - TP Games</title>
+
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Tahoma,sans-serif;
+    background:#e8e8e8;
+    color:#444;
+    min-height:100vh;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    min-height:72px;
+    background:#fff;
+    border-bottom:1px solid #ccc;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 3px 14px rgba(0,0,0,.07);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:-1px;
+    color:#0878f9;
+    position:relative;
+}
+
+.logo::after{
+    content:"";
+    display:block;
+    width:34px;
+    height:3px;
+    background:#0878f9;
+    margin-top:4px;
+    border-radius:5px;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#555;
+    padding:10px 14px;
+    font-size:14px;
+    font-weight:700;
+    border-radius:8px;
+    transition:.25s ease;
+}
+
+nav a:hover{
+    color:#0878f9;
+    background:#e8e8e8;
+}
+
+/* ================= MAIN ================= */
+
+.container{
+    width:88%;
+    max-width:1250px;
+    margin:34px auto 45px;
+    display:grid;
+    grid-template-columns:280px minmax(0,1fr);
+    gap:28px;
+    direction:ltr;
+}
+
+.sidebar,
+.content{
+    direction:rtl;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.download-box,
+.requirements{
+    background:#ddd;
+    border:1px solid #ccc;
+    border-radius:14px;
+    padding:15px;
+    box-shadow:0 7px 20px rgba(0,0,0,.08);
+}
+
+.download-box{
+    position:sticky;
+    top:95px;
+}
+
+.download-btn{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#0878f9;
+    color:white;
+    text-decoration:none;
+    padding:16px 18px;
+    font-size:16px;
+    font-weight:bold;
+    border-radius:10px;
+    box-shadow:0 5px 12px rgba(0,0,0,.18);
+    transition:.25s ease;
+}
+
+.download-btn:hover{
+    background:#0065d8;
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,.2);
+}
+
+.download-arrow{
+    font-size:25px;
+    line-height:1;
+    transition:.25s ease;
+}
+
+.download-btn:hover .download-arrow{
+    transform:translateY(3px);
+}
+
+.features{
+    padding:12px 5px 3px;
+    color:#777;
+    font-size:12px;
+    line-height:2;
+}
+
+.features div{
+    padding:2px 0;
+}
+
+.features div::before{
+    content:"✓";
+    margin-left:7px;
+    color:#0878f9;
+    font-weight:bold;
+}
+
+.requirements{
+    font-size:12px;
+    line-height:1.8;
+}
+
+.requirements h3{
+    font-size:15px;
+    color:#555;
+    margin-bottom:13px;
+}
+
+.requirements p{
+    background:#e8e8e8;
+    border:1px solid #ccc;
+    padding:9px 10px;
+    margin-bottom:8px;
+    border-radius:8px;
+}
+
+.requirements strong{
+    color:#333;
+}
+
+.requirements hr{
+    border:0;
+    border-top:1px solid #bbb;
+    margin:13px 0;
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+    min-width:0;
+}
+
+/* ================= HERO / IMAGE ================= */
+
+.main-image{
+    background:#222;
+    width:100%;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 12px 30px rgba(0,0,0,.16);
+    border:1px solid #ccc;
+}
+
+.main-image > img{
+    display:block;
+    width:100%;
+    height:430px;
+    object-fit:cover;
+    transition:transform .45s ease;
+}
+
+.main-image:hover > img{
+    transform:scale(1.015);
+}
+
+/* ================= THUMBNAILS ================= */
+
+.thumbnails{
+    background:#222;
+    padding:9px;
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:8px;
+}
+
+.thumbnails img{
+    width:100%;
+    height:68px;
+    object-fit:cover;
+    cursor:pointer;
+    opacity:.62;
+    border:2px solid transparent;
+    border-radius:7px;
+    transition:.22s ease;
+}
+
+.thumbnails img:hover{
+    opacity:1;
+    transform:translateY(-2px);
+    border-color:#0878f9;
+}
+
+/* ================= ARTICLE ================= */
+
+.article{
+    background:#fff;
+    margin-top:20px;
+    padding:30px 34px 35px;
+    border:1px solid #ddd;
+    border-radius:16px;
+    line-height:2;
+    box-shadow:0 8px 24px rgba(0,0,0,.07);
+}
+
+.article h1{
+    font-size:28px;
+    color:#333;
+    margin-bottom:13px;
+    line-height:1.3;
+}
+
+.article h1::after{
+    content:"";
+    display:block;
+    width:55px;
+    height:4px;
+    background:#0878f9;
+    border-radius:5px;
+    margin-top:10px;
+}
+
+.article h2{
+    font-size:20px;
+    color:#0878f9;
+    margin:28px 0 9px;
+}
+
+.article p{
+    font-size:14px;
+    color:#666;
+    margin-bottom:10px;
+}
+
+/* ================= GAME INFO ================= */
+
+.info{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:25px;
+}
+
+.info-box{
+    background:#e8e8e8;
+    border:1px solid #ddd;
+    padding:18px 12px;
+    text-align:center;
+    border-radius:11px;
+    transition:.25s ease;
+}
+
+.info-box:hover{
+    border-color:#0878f9;
+    transform:translateY(-3px);
+    box-shadow:0 6px 15px rgba(0,0,0,.08);
+}
+
+.info-box strong{
+    display:block;
+    color:#0878f9;
+    font-size:18px;
+    margin-bottom:4px;
+    line-height:1.4;
+}
+
+/* ================= PLAY ================= */
+
+.play{
+    display:block;
+    width:max-content;
+    margin:24px auto 0;
+    background:#0878f9;
+    color:white;
+    text-decoration:none;
+    padding:13px 38px;
+    border-radius:9px;
+    font-weight:bold;
+    box-shadow:0 5px 12px rgba(0,0,0,.15);
+    transition:.25s ease;
+}
+
+.play:hover{
+    background:#0065d8;
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0878f9;
+    color:white;
+    text-align:center;
+    padding:24px;
+    margin-top:30px;
+    font-size:13px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+    header{
+        padding:0 22px;
+    }
+
+    .container{
+        width:92%;
+        grid-template-columns:1fr;
+    }
+
+    .download-box{
+        position:static;
+    }
+
+    .main-image > img{
+        height:360px;
+    }
+}
+
+@media(max-width:650px){
+    header{
+        min-height:65px;
+    }
+
+    .logo{
+        font-size:23px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .container{
+        width:94%;
+        margin-top:20px;
+    }
+
+    .main-image > img{
+        height:240px;
+    }
+
+    .thumbnails{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .thumbnails img{
+        height:58px;
+    }
+
+    .article{
+        padding:23px 18px 28px;
+        border-radius:12px;
+    }
+
+    .article h1{
+        font-size:23px;
+    }
+
+    .info{
+        grid-template-columns:1fr;
+    }
+
+    .play{
+        width:100%;
+        text-align:center;
+    }
+}
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        TP Games
+    </div>
+
+    <nav>
+
+        <a href="D:\Games\Html\index.html">Home</a>
+
+        <a href="D:\Games\Html\games.html">Games</a>
+
+        <a href="#">Movies</a>
+
+        <a href="#">Contact</a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ================= PAGE ================= -->
+
+<div class="container">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+
+        <!-- DOWNLOAD -->
+
+        <div class="download-box">
+
+            <a href="https://koramaup.com/eocV" class="download-btn">
+
+                <span>
+                    Download Direct
+                </span>
+
+                <span class="download-arrow">
+                    ↓
+                </span>
+
+            </a>
+
+
+            <div class="features">
+
+                <div>
+                    Full Game
+                </div>
+
+                <div>
+                    Fast Download
+                </div>
+
+                <div>
+                    Complete Version
+                </div>
+
+                <div>
+                    Virus Free
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- REQUIREMENTS -->
+
+        <div class="requirements">
+
+            <h3>
+                Minimum System Requirements:
+            </h3>
+
+
+            <p>
+
+                <strong>
+                    Processor:
+                </strong>
+
+                <br>
+
+                Intel i5-8400 OR AMD Ryzen 5 1600
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Graphics:
+                </strong>
+
+                <br>
+
+                Nvidia GTX 1650 OR AMD RX 6500 XT OR Intel Arc A380
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    RAM:
+                </strong>
+
+                <br>
+
+                16 GB
+
+            </p>
+            <p>
+                   <strong>
+                    Storage:
+                </strong>
+                <br>
+                131 GB available space
+            </p>
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= GAME CONTENT ================= -->
+
+    <main class="content">
+
+
+        <!-- MAIN IMAGE -->
+
+        <div class="main-image">
+
+
+            <!-- الصورة الرئيسية -->
+
+            <img
+                id="mainImage"
+                src="FORZA 1.jpg"
+                alt="Forza Horaizen 6"
+            >
+
+
+            <!-- الصور الصغيرة -->
+
+            <div class="thumbnails">
+
+
+                <img
+                    src="FORZA 1.jpg"
+                    onclick="changeImage(this)"
+                    alt="Forza Horaizen 6"
+                >
+
+
+                <img
+                    src="FORZA 2.jpg"
+                    onclick="changeImage(this)"
+                    alt="Forza Horaizen 6"
+                >
+
+
+                <img
+                    src="FORZA 3.jpg"
+                    onclick="changeImage(this)"
+                    alt="Forza Horaizen 6"
+                >
+
+
+                <img
+                    src="FORZA 4.jpg"
+                    onclick="changeImage(this)"
+                    alt="Forza Horaizen 6"
+                >
+
+
+                <img
+                    src="FORZA 5.jpg"
+                    onclick="changeImage(this)"
+                    alt="Forza Horaizen 6"
+                >
+
+
+                <img
+                    src="FORZA 6.jpg"
+                    onclick="changeImage(this)"
+                    alt="Forza Horaizen 6"
+                >
+
+
+                <img
+                    src="FORZA 7.jpg"
+                    onclick="changeImage(this)"
+                    alt="Forza Horaizen 6"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= DESCRIPTION ================= -->
+
+        <article class="article">
+
+
+            <h1>
+                Forza Horizen 6
+            </h1>
+
+
+            <p>
+                مرحباً بكم في Forza Horizen 6!
+
+اكتشفوا تجربة لعب مثيرة
+
+مليئة بالحركة والمغامرة والتحديات.
+            </p>
+
+
+            <h2>
+                عن اللعبة
+            </h2>
+
+
+            <p>
+               اشهر لعبة سباق في عالم مفتوح تعود الينا باصدار جديد تحت اسم Forza Horizon 6 حيث تأخذنا في رحلة استثنائية إلى اليابان و تقدم اللعبة خريطة هي الأكبر والأفضل في تاريخ السلسلة.
+آراء الأعضاء          </p>
+
+
+            <p>
+                استكشف العالم، وأنجز المهام，
+
+و فز في السباقات، واستمتع بتجربة لعب مثيرة.
+            </p>
+
+
+
+            <!-- INFO -->
+
+            <div class="info">
+
+
+                <div class="info-box">
+
+                    <strong>
+                        PC
+                    </strong>
+
+                    Platform
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Racing
+                    </strong>
+
+                    Genre
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Forza Horizen 6
+                    </strong>
+
+                    Game
+
+                </div>
+
+            </div>
+
+
+
+            <a
+                href="#"
+                class="play"
+            >
+                Play Now
+            </a>
+
+
+        </article>
+
+    </main>
+
+</div>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    TP Games © 2026
+
+</footer>
+
+
+
+<script>
+
+function changeImage(image) {
+
+    document.getElementById("mainImage").src =
+        image.src;
+
+}
+
+</script>
+
+
+</body>
+</html>
